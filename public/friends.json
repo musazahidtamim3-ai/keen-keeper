@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Kabir Khan",
+    "picture": "https://images.unsplash.com/photo-1519058082700-08a0b56da9b4",
+    "email": "marcus.chen.dev@email.com",
+    "days_since_contact": 45,
+    "status": "overdue",
+    "tags": ["college","hiking"],
+    "bio": "Former roommate from state tech. We usually grab dim sum or hit the trails when he's in town.",
+    "goal": 30,
+    "next_due_date": "2026-03-30"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Jenkins",
+    "picture": "https://images.unsplash.com/photo-1596535769582-ae8ee239e96e",
+    "email": "sara.j.books@email.com",
+    "days_since_contact": 5,
+    "status": "on-track",
+    "tags": ["close friend", "book club"],
+    "bio": "Met at the local library. She has the best recommendations for historical fiction and sci-fi.",
+    "goal": 14,
+    "next_due_date": "2026-04-22"
+  },
+  {
+    "id": 3,
+    "name": "Elena Rodriguez",
+    "picture": "https://images.unsplash.com/photo-1664575600850-c4b712e6e2bf",
+    "email": "elena.design@email.com",
+    "days_since_contact": 12,
+    "status": "almost due",
+    "tags": ["work", "mentor"],
+    "bio": "Creative Director at my first job. She's been a massive help with navigating my career transitions.",
+    "goal": 14,
+    "next_due_date": "2026-04-15"
+  },
+  {
+    "id": 4,
+    "name": "David O'Neil",
+    "picture": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+    "email": "doneil.photo@email.com",
+    "days_since_contact": 80,
+    "status": "overdue",
+    "tags": ["photography"],
+    "bio": "Grew up on the same street. We both picked up film photography during the pandemic.",
+    "goal": 60,
+    "next_due_date": "2026-02-25"
+  },
+  {
+    "id": 5,
+    "name": "Marium Faruq",
+    "picture": "/female.avif",
+    "email": "mar-far@email.com",
+    "tags": ["fitness", "marathon"],
+    "days_since_contact": 2,
+    "status": "on-track",
+    "bio": "My running partner. We are currently training for the upcoming city half-marathon together.",
+    "goal": 7,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 6,
+    "name": "Jordan Lee",
+    "picture": "https://plus.unsplash.com/premium_photo-1675130119373-61ada6685d63",
+    "email": "jlee.gaming@email.com",
+    "days_since_contact": 20,
+    "status": "almost due",
+    "tags": ["gaming", "high school"],
+    "bio": "Still play cooperative RPGs every few weekends. Known him since freshman year biology.",
+    "goal": 21,
+    "next_due_date": "2026-04-14"
+  },
+  {
+    "id": 7,
+    "name": "Samira Khan",
+    "picture": "https://plus.unsplash.com/premium_photo-1676994915840-6222e0d9ea8d",
+    "email": "samira.cooks@email.com",
+    "days_since_contact": 65,
+    "status": "overdue",
+    "tags": ["neighbor", "foodie"],
+    "bio": "My old neighbor from the city. We bonded over our mutual love for authentic street food.",
+    "goal": 30,
+    "next_due_date": "2026-03-10"
+  },
+  {
+    "id": 8,
+    "name": "Leo Vance",
+    "picture": "https://images.unsplash.com/photo-1514461713809-b245d3816ff1",
+    "email": "leo.vance.music@email.com",
+    "days_since_contact": 4,
+    "status": "on-track",
+    "tags": ["musician", "band"],
+    "bio": "Plays bass in our amateur weekend band. Very reliable and has a great ear for rhythm.",
+    "goal": 7,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 9,
+    "name": "Fatima Zohra",
+    "picture": "https://images.unsplash.com/photo-1627378228978-a62f71edff15",
+    "email": "fatima.z@lifestyle.com",
+    "days_since_contact": 1,
+    "status": "on-track",
+    "tags": [
+      "university",
+      "calligraphy"
+    ],
+    "bio": "My best friend from university. She is incredibly talented at Arabic calligraphy and we often visit art exhibitions together.",
+    "goal": 15,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 10,
+    "name": "Safiya Ahmed",
+    "picture": "https://plus.unsplash.com/premium_photo-1774437875891-d1a153d214a6",
+    "email": "safiya.ahmad@charity.org",
+    "days_since_contact": 15,
+    "status": "almost due",
+    "tags": [
+      "volunteer",
+      "cooking"
+    ],
+    "bio": "Met during a community charity drive. She's an amazing cook and we share a love for traditional homemade recipes.",
+    "goal": 30,
+    "next_due_date": "2026-05-05"
+  }
+]

@@ -1,65 +1,81 @@
+"use client"
+import { FaPlus } from "react-icons/fa6";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+  const [friends, setFriends] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const[imageLoaded,setImageLoaded] = useState(false)
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      const res = await fetch('/friends.json')
+      const data = await res.json()
+      setFriends(data)
+      setIsLoading(false)
+    }
+    fetchData()
+  },[])
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="py-10">
+      <div>
+        <h1 className="text-3xl font-bold text-center">Friends to keep close in your life</h1>
+        <p className="text-gray-400 text-center max-w-150 mx-auto py-3 font-medium">Your personal shelf of meaningful connections. Browse, tend, and nurture the
+          relationships that matter most.</p>
+      </div>
+      <div className="flex justify-center">
+        <button className="btn bg-[#244D3F] text-white"><FaPlus></FaPlus> Add a Friend</button>
+      </div>
+      <div className="grid grid-cols-4 gap-5 pt-10">
+        <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
+          <h1 className="text-2xl font-semibold">{friends.length}</h1>
+          <p className="text-gray-400 pt-1 font-medium">Total friends</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
+          <h1 className="text-2xl font-semibold">3</h1>
+          <p className="text-gray-400 pt-1 font-medium">On Track</p>
         </div>
-      </main>
+        <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
+          <h1 className="text-2xl font-semibold">5</h1>
+          <p className="text-gray-400 pt-1 font-medium">Need Attention</p>
+        </div>
+        <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
+          <h1 className="text-2xl font-semibold">12</h1>
+          <p className="text-gray-400 pt-1 font-medium">Interactions this month</p>
+        </div>
+      </div>
+      <hr className="border border-gray-100 mt-5"></hr>
+      <div>
+        <h1 className="text-2xl font-semibold pt-5">Your Friends</h1>
+        {
+          isLoading === true ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-[#244D3F]"></span></div> :
+          <div className="grid grid-cols-4 gap-5 pt-5">
+              {
+                friends.map(friend => (
+                  <Link href={`${friend.id}`} key={friend.id} className="bg-base-100 flex flex-col items-center border border-gray-200 p-5 shadow-md rounded-md">
+                    <div className="relative w-30 h-30 mb-3 rounded-full overflow-hidden">
+                      {!imageLoaded && (
+                        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-full " />
+                      )}
+                      <Image src={friend.picture} onLoad={()=>setImageLoaded(true)} className={`object-cover rounded-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} alt="" fill></Image>
+                </div>
+                <h1 className="text-lg">{friend.name}</h1>
+                <p className="pt-1 pb-3 text-gray-400 font-medium">{friend.days_since_contact}d ago</p>
+                <div className="flex items-center gap-2 mb-2">
+                  {
+                    friend.tags.map((tag, index) => <p className="bg-green-100 text-green-600 badge rounded-full font-medium" key={index}>{tag}</p>)
+                  }
+                </div>
+                <p className={`badge rounded-full font-medium text-white ${friend.status==='on-track'?"bg-[#244d3F]":friend.status==='overdue'?'bg-red-500':"bg-orange-500"}`}>{friend.status}</p>
+              </Link>
+            ))
+          }
+        </div>
+        }
+        
+      </div>
     </div>
   );
 }
