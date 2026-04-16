@@ -1,16 +1,15 @@
 import Image from 'next/image';
-import React from 'react';
-import { FaArchive, FaTextHeight } from 'react-icons/fa';
-import { FaBell, FaDeleteLeft, FaPhone, FaVideo } from 'react-icons/fa6';
-import { FiDelete } from 'react-icons/fi';
-import { IoChatbox } from 'react-icons/io5';
-import { MdDelete } from 'react-icons/md';
+import { AiFillDelete } from 'react-icons/ai';
+import { FaFileArchive} from 'react-icons/fa';
+import { FaBell} from 'react-icons/fa6';
+import CheckInButtons from './CheckInButtons';
 
 const FriendDetailpage = async ({ params }) => {
      const { friendId } = await params;
      const res = await fetch('http://localhost:3000/friends.json')
      const datas = await res.json()
      const friend = datas.find(f => f.id === Number(friendId))
+
      return (
           <div className='grid grid-cols-2 gap-5 my-10'>
                <div className='col-span-1'>
@@ -29,8 +28,8 @@ const FriendDetailpage = async ({ params }) => {
                     </div>
                     <div className='flex flex-col gap-3 mt-3'>
                          <button className='btn w-full flex items-center gap-2 font-medium'><FaBell></FaBell> Snooze 2 weeks</button>
-                         <button className='btn w-full flex items-center gap-2 font-medium'><FaArchive></FaArchive> Archieve</button>
-                         <button className='btn w-full flex items-center gap-2 font-medium'><MdDelete></MdDelete> Delete</button>
+                         <button className='btn w-full flex items-center gap-2 font-medium'><FaFileArchive></FaFileArchive> Archieve</button>
+                         <button className='btn w-full flex items-center gap-2 font-medium text-red-500'><AiFillDelete></AiFillDelete> Delete</button>
                     </div>
                </div>
                <div className="col-span-1">
@@ -55,14 +54,11 @@ const FriendDetailpage = async ({ params }) => {
                          </div>
                          <p className='text-gray-400'>Connect Every <span className='font-semibold text-black'>30 days</span></p>
                     </div>
-                    <div className='bg-base-100 mt-5 p-5 rounded-md border border-gray-200 shadow-md font-medium'>
-                         <h2>Quick Check-In</h2>
-                         <div className='flex items-center gap-3 mt-3'>
-                              <button className='flex bg-base-200 rounded-md border border-gray-300 p-3 flex-col gap-2  flex-1 items-center'><FaPhone></FaPhone> Call</button>
-                              <button className='flex p-3 bg-base-200 rounded-md border border-gray-300 flex-col gap-2  flex-1 items-center'><IoChatbox></IoChatbox> Text</button>
-                              <button className='flex p-3 bg-base-200 rounded-md border border-gray-300 flex-col gap-2  flex-1 items-center'><FaVideo></FaVideo> Video</button>
-                         </div>
+
+                    <div>
+                         <CheckInButtons friendName={friend.name}></CheckInButtons>
                     </div>
+
                </div>
           </div>
      );
