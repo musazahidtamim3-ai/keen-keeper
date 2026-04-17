@@ -3,12 +3,16 @@ import { AiFillDelete } from 'react-icons/ai';
 import { FaFileArchive} from 'react-icons/fa';
 import { FaBell} from 'react-icons/fa6';
 import CheckInButtons from './CheckInButtons';
+import { notFound } from 'next/navigation';
 
 const FriendDetailpage = async ({ params }) => {
      const { friendId } = await params;
      const res = await fetch(`${'https://keen-keeper-two-chi.vercel.app'}/friends.json`, { cache: 'no-store' });
      const datas = await res.json()
      const friend = datas.find(f => f.id === Number(friendId))
+     if (!friend) {
+          notFound();
+     }
 
      return (
           <div className='grid grid-cols-1 px-5 lg:px-0 md:grid-cols-2 gap-5 my-10'>

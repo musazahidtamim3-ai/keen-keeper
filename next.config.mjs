@@ -17,14 +17,7 @@ const nextConfig = {
         port: '',
         pathname: '/**',
         search: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.facebook.com',
-        port: '',
-        pathname: '/**',
-        search: '',
-      },
+      }
     ],
   },
 };
