@@ -6,7 +6,7 @@ import CheckInButtons from './CheckInButtons';
 
 const FriendDetailpage = async ({ params }) => {
      const { friendId } = await params;
-     const res = await fetch('http://localhost:3000/friends.json')
+     const res = await fetch(`${'https://keen-keeper-two-chi.vercel.app'}/friends.json`, { cache: 'no-store' });
      const datas = await res.json()
      const friend = datas.find(f => f.id === Number(friendId))
 

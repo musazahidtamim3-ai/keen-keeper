@@ -54,7 +54,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-5">
               {
                 friends.map(friend => (
-                  <Link href={`${friend.id}`} key={friend.id} className="bg-base-100 flex flex-col items-center border border-gray-200 p-5 shadow-md rounded-md">
+                  <Link href={`/${friend.id}`} key={friend.id} className="bg-base-100 flex flex-col items-center border border-gray-200 p-5 shadow-md rounded-md">
                     <div className="relative w-30 h-30 mb-3 rounded-full overflow-hidden">
                       {!imageLoaded && (
                         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-full " />
