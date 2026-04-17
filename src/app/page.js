@@ -34,15 +34,15 @@ export default function Home() {
           <p className="text-gray-400 pt-1 font-medium">Total friends</p>
         </div>
         <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
-          <h1 className="text-2xl font-semibold">4</h1>
+          <h1 className="text-2xl font-semibold">5</h1>
           <p className="text-gray-400 pt-1 font-medium">On Track</p>
         </div>
         <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
-          <h1 className="text-2xl font-semibold">6</h1>
+          <h1 className="text-2xl font-semibold">5</h1>
           <p className="text-gray-400 pt-1 font-medium">Need Attention</p>
         </div>
         <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
-          <h1 className="text-2xl font-semibold">7</h1>
+          <h1 className="text-2xl font-semibold">8</h1>
           <p className="text-gray-400 pt-1 font-medium">Interactions this month</p>
         </div>
       </div>

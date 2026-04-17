@@ -18,6 +18,13 @@ const nextConfig = {
         pathname: '/**',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.facebook.com',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
     ],
   },
 };
