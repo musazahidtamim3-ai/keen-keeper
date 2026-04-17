@@ -19,7 +19,7 @@ export default function Home() {
     fetchData()
   },[])
   return (
-    <div className="py-10">
+    <div className="py-10 px-5 lg:px-0">
       <div>
         <h1 className="text-3xl font-bold text-center">Friends to keep close in your life</h1>
         <p className="text-gray-400 text-center max-w-150 mx-auto py-3 font-medium">Your personal shelf of meaningful connections. Browse, tend, and nurture the
@@ -28,7 +28,7 @@ export default function Home() {
       <div className="flex justify-center">
         <button className="btn bg-[#244D3F] text-white"><FaPlus></FaPlus> Add a Friend</button>
       </div>
-      <div className="grid grid-cols-4 gap-5 pt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-10">
         <div className="bg-base-100 p-5 border border-gray-200 shadow-md text-center rounded-md">
           <h1 className="text-2xl font-semibold">{friends.length}</h1>
           <p className="text-gray-400 pt-1 font-medium">Total friends</p>
@@ -51,7 +51,7 @@ export default function Home() {
         <h1 className="text-2xl font-semibold pt-5">Your Friends</h1>
         {
           isLoading === true ? <div className="flex items-center justify-center"><span className="loading loading-spinner text-[#244D3F]"></span></div> :
-          <div className="grid grid-cols-4 gap-5 pt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 pt-5">
               {
                 friends.map(friend => (
                   <Link href={`${friend.id}`} key={friend.id} className="bg-base-100 flex flex-col items-center border border-gray-200 p-5 shadow-md rounded-md">

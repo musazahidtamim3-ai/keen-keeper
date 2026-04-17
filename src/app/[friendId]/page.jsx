@@ -11,10 +11,10 @@ const FriendDetailpage = async ({ params }) => {
      const friend = datas.find(f => f.id === Number(friendId))
 
      return (
-          <div className='grid grid-cols-2 gap-5 my-10'>
+          <div className='grid grid-cols-1 px-5 lg:px-0 md:grid-cols-2 gap-5 my-10'>
                <div className='col-span-1'>
                     <div className="bg-base-100 flex flex-col items-center border border-gray-200 p-10 shadow-md rounded-md">
-                         <Image src={friend.picture} className="w-50 h-50 object-cover mb-3 rounded-full" alt="" height={500} width={500}></Image>
+                         <Image src={friend.picture} className="w-40 md:w-50 h-40 md:h-50 object-cover mb-3 rounded-full" alt="" height={500} width={500}></Image>
                          <h1 className="text-2xl">{friend.name}</h1>
                          <p className="pt-1 pb-3 text-gray-400 font-medium">{friend.days_since_contact}d ago</p>
                          <p className={`badge rounded-full font-medium text-white ${friend.status === 'on-track' ? "bg-[#244d3F]" : friend.status === 'overdue' ? 'bg-red-500' : "bg-orange-500"}`}>{friend.status}</p>

@@ -7,12 +7,14 @@ const TimelinePage = () => {
      
      const [history, setHistory] = useState([])
      const [filteredhistory, setFilteredHistory] = useState([])
+     const [isLoaded, setisLoaded] = useState(false)
      useEffect(() => {
           const data = localStorage.getItem("myTimeline")
           if (data) {
                setHistory(JSON.parse(data))
                setFilteredHistory(JSON.parse(data))
           }
+          setisLoaded(true)
      }, [])
      const handleFilter = (type) => {
           if (type === "all"){
@@ -23,8 +25,11 @@ const TimelinePage = () => {
                setFilteredHistory(filtered)
           }
      }
+     if (!isLoaded) {
+          return <div className="flex items-center justify-center"><span className="loading loading-spinner text-[#244D3F]"></span></div>
+     }
      return (
-          <div className='my-10'>
+          <div className='my-10 px-5 lg:px-0'>
                <h1 className='text-[#244D3F] text-3xl font-bold text-left'>Timeline</h1>
                <div className="dropdown dropdown-start font-medium">
                     <div tabIndex={0} role="button" className="btn my-4 flex items-center gap-5">Filter Timeline <FaSortDown></FaSortDown></div>
@@ -37,15 +42,19 @@ const TimelinePage = () => {
                </div>
                <div className='space-y-3'>
                     {
-                         filteredhistory.map((his,index) => (
-                              <div className='bg-base-100 p-5 w-full border border-gray-200 shadow-md rounded-md flex gap-5 items-center' key={index}>
-                                   <Image height={30} width={30} src={`${his.action === 'call' ? "/call.png" : his.action === "text" ? "/text.png" : "/video.png"}`} alt=''></Image>
-                                   <div className='font-medium text-gray-500'>
-                                        <h2><span className='text-xl text-black'>{his.action}</span> with {his.name}</h2>
-                                        <p>{his.date}</p>
-                                   </div>
-                              </div>  
-                         ))
+                         filteredhistory.length === 0 ? (<div className='bg-base-100 p-5 w-full border border-gray-200 shadow-md rounded-md flex items-center justify-center'>
+                              <p className='text-[#244D3F] text-xl text-center'>No timeline found !</p>
+                         </div>):( 
+                              filteredhistory.map((his, index) => (
+                                   <div className='bg-base-100 p-5 w-full border border-gray-200 shadow-md rounded-md flex gap-5 items-center' key={index}>
+                                        <Image height={30} width={30} src={`${his.action === 'call' ? "/call.png" : his.action === "text" ? "/text.png" : "/video.png"}`} alt=''></Image>
+                                        <div className='font-medium text-gray-500'>
+                                             <h2><span className='text-xl text-black'>{his.action}</span> with {his.name}</h2>
+                                             <p>{his.date}</p>
+                                        </div>
+                                   </div>)
+                              ))
+                         
                     }
                </div>
           </div>

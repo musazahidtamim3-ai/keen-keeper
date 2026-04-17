@@ -22,28 +22,32 @@ const StatusPage = () => {
           }
      },[])
      return (
-          <div className='my-10'>
+          <div className='my-10 px-5 lg:px-0'>
                <h1 className='text-[#244D3F] text-3xl font-bold text-left'>Friendship Analytics</h1>
                <div className='bg-base-100 border border-gray-200 shadow-md p-5 mt-5 rounded-md'>
-                    <h2 className='font-medium'>By Interaction Type</h2>
-                    <div style={{ width: '100%', height: 300}}>
-                         <ResponsiveContainer>
-                              <PieChart>
-                                   <Pie
-                                        data={chartData}
-                                        innerRadius="70%"
-                                        outerRadius="100%"
-                                        paddingAngle={5}
-                                        dataKey="value">
-                                        {chartData.map((data, index) => (
-                                             <Cell key={`cell-${index}`} fill={data.color} />
-                                        ))}
-                                   </Pie>
-                                   <Tooltip/>
-                                   <Legend />  
-                              </PieChart>
-                         </ResponsiveContainer>
-                    </div>
+                    
+                    {
+                         chartData.length === 0 ? <p className='p-10 text-[#244D3F] text-xl text-center'>No statistics found !</p> : <div>
+                              <h2 className='font-medium'>By Interaction Type</h2><div className='mt-5' style={{ width: '100%', height: 200 }}>
+                                   <ResponsiveContainer>
+                                        <PieChart>
+                                             <Pie
+                                                  data={chartData}
+                                                  innerRadius="70%"
+                                                  outerRadius="100%"
+                                                  paddingAngle={5}
+                                                  dataKey="value">
+                                                  {chartData.map((data, index) => (
+                                                       <Cell key={`cell-${index}`} fill={data.color} />
+                                                  ))}
+                                             </Pie>
+                                             <Tooltip />
+                                             <Legend />
+                                        </PieChart>
+                                   </ResponsiveContainer>
+                              </div>
+                         </div>
+                    }
                </div>
           </div>
      );
